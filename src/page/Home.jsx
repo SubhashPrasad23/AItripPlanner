@@ -5,14 +5,16 @@ import Features from "../components/Features";
 import ItineraryDisplay from "../components/ItineraryDisplay";
 import { fetchGeminiResponse } from "../api/geminiApi";
 
-
-const Home=()=> {
+const Home = () => {
     const [loading, setLoading] = useState(false);
+
+    const today = new Date().toISOString().split("T")[0];
+
     const [formData, setFormData] = useState({
         source: "",
         destination: "",
-        departDate: "",
-        returnDate: "",
+        departDate: today, 
+        returnDate: today, 
         travelers: "1",
         interests: "",
         mode: "none",
@@ -46,7 +48,7 @@ const Home=()=> {
             newErrors.returnDate = "Return date is required";
             isValid = false;
         }
-        if (!formData.interests ) {
+        if (!formData.interests) {
             newErrors.interests = "Interest is required";
             isValid = false;
         }
@@ -88,19 +90,20 @@ const Home=()=> {
 
     return (
         <main className="min-h-screen bg-[#0f0f13]">
-                <Hero scrollRef={scrollFormRef} onClick={HandlescrollForm} />
-                <TravelForm
-                    scrollRef={scrollFormRef}
-                    loading={loading}
-                    setLoading={setLoading}
-                    onSubmit={handleSubmit}
-                    formData={formData}
-                    setFormData={setFormData}
-                    errors={errors} 
-                />
-                {Object.keys(response).length > 0 && <ItineraryDisplay response={response} scrollItineraryRef={scrollItineraryRef} />}
-       <Features/>
+            <Hero scrollRef={scrollFormRef} onClick={HandlescrollForm} />
+            <TravelForm
+                scrollRef={scrollFormRef}
+                loading={loading}
+                setLoading={setLoading}
+                onSubmit={handleSubmit}
+                formData={formData}
+                setFormData={setFormData}
+                errors={errors}
+            />
+            {Object.keys(response).length > 0 && <ItineraryDisplay response={response} scrollItineraryRef={scrollItineraryRef} />}
+            <Features />
         </main>
     );
-}
-export default Home
+};
+
+export default Home;

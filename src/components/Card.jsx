@@ -4,7 +4,7 @@ import { checkisArray } from '../utils/Helper';
 
 const Card = ({ heading, budgetHeading, content, data }) => {
     const [isContentArray, setIsContentArray] = useState(false);
-
+console.log(heading,content)
     useEffect(() => {
         setIsContentArray(checkisArray(content));
     }, [content]);
@@ -42,13 +42,13 @@ const Card = ({ heading, budgetHeading, content, data }) => {
                                 <div>
                                     {Object.entries(item).map(([key, value]) => (
                                         <p key={key}>
-                                            <span className=" text-purple-300 tracking-wide">{key}:</span> {value}
+                                            <span className=" text-purple-300 tracking-wide capitalize">{key}:</span> {value}
                                         </p>
                                         
                                     ))}
                                 </div>
                             ) : (
-                                item
+                                    item
                             )}
                         </li>
                     ))}
@@ -56,7 +56,7 @@ const Card = ({ heading, budgetHeading, content, data }) => {
             );
         } 
      else {
-            return <p className="text-gray-300">{JSON.stringify(content)}</p>;
+            return <p className="text-gray-300">{JSON.stringify(content).replace(/"/g, '')}</p>;
         }
     };
 

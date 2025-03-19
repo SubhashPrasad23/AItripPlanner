@@ -2,8 +2,8 @@
 
 
 input[type="number"] {
-  -moz-appearance: textfield; /* Firefox */
-  -webkit-appearance: textfield; /* Chrome, Safari, Edge */
+  -moz-appearance: textfield; 
+  -webkit-appearance: textfield; 
   appearance: textfield;
 }
 
