@@ -39,7 +39,7 @@ const TravelForm = ({ scrollRef, loading, onSubmit, formData, setFormData, error
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
                 >
-                    <div className="p-8 md:p-12">
+                    <div className="p-5 md:p-8">
                         <motion.form
                             onSubmit={onSubmit}
                             variants={formVariants}
