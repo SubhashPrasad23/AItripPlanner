@@ -99,8 +99,8 @@ const Home=()=> {
                     errors={errors} 
                 />
                 {Object.keys(response).length > 0 && <ItineraryDisplay response={response} scrollItineraryRef={scrollItineraryRef} />}
-                <Features />
+       <Features/>
         </main>
     );
 }
-export default Hero
+export default Home
